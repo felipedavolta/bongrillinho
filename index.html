@@ -15,7 +15,6 @@
             flex-direction: column;
             align-items: center;
             background-color: #870601;
-            color: #333;
             text-align: center;
         }
 
@@ -37,13 +36,13 @@
 
         .container {
             width: 90%;
-            max-width: 600px;
+            max-width: 400px;
             padding: 20px;
             border-radius: 30px;
-            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 40px 80px rgba(0, 0, 0, 0.2);
             margin: 0 20px 20px 20px;
             box-sizing: border-box;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: #f5e6d2;
         }
 
         #slot-machine {
@@ -85,7 +84,7 @@
         #prato-principal {
             font-size: 1.2rem;
             font-weight: 700;
-            background-color: #f4eb80;
+            background-color: #fecd29;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
@@ -106,25 +105,29 @@
         }
 
         #preco {
-            font-size: 1rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 1.25rem;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 30px;
-            color: #333;
-            border: none;
+            color: #870601;
+            border: 2px solid #870601;
             margin-top: 0px;
-            display: none;
+            background-color: transparent;
+            display: block;
+            width: 140px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 640px) {
             #preco {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
         }
 
         #embaralhar {
-            background-color: #b83e2d;
+            background-color: #8b0901;
             color: white;
             padding: 10px 20px;
             padding: 0.8rem;
@@ -140,12 +143,12 @@
         }
 
         #embaralhar:hover {
-            background-color: #b83e2d;
+            background-color: #a61b13;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         #embaralhar:active {
-            background-color: #943022;
+            background-color: #8b0901;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             transform: scale(0.93) translateY(2px);
         }
@@ -191,13 +194,49 @@
         }
 
         .slot-item-text {
-            position: relative;
+            position: absolute;
             z-index: 1;
             color: #333;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 90%;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .slot-item-text.slide-out {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .slot-item-text.slide-in {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .slot-item-text.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #preco .price-text {
+            display: inline-block;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        #preco .price-text.slide-out {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        #preco .price-text.slide-in {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        #preco .price-text.active {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .sliding-background {
@@ -206,7 +245,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #f0e68c;
+            background-color: #fecd29;
             transform: translateX(100%);
             transition: transform 0.5s ease-in-out;
             z-index: 2;
@@ -242,33 +281,34 @@
             <img src="logo_bongrillinho.jpg" alt="BonGrillinho Logo" id="logo-bongrillinho" />
         </div>
         <div class="container">
-            <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; color: #333;">Está indeciso? Clica aqui e boa sorte no BonGrillinho!</p>
+            <p style="margin: 0 0 1.5rem 0; font-size: 1.3rem; color: #333;">Indeciso? Clica no botão para embaralhar e boa sorte no BonGrillinho!</p>
             <div id="slot-machine">
                 <div class="slot-item" id="prato-principal">
                     <div class="slot-item-content">
-                        <span class="slot-item-text">Prato Principal</span>
-                        <div class="sliding-background"></div>
+                        <span class="slot-item-text active">Prato Principal</span>
+                        <span class="slot-item-text"></span>
                     </div>
                 </div>
                 <div class="slot-item" id="acompanhamento1">
                      <div class="slot-item-content">
-                        <span class="slot-item-text">Acompanhamento 1</span>
-                        <div class="sliding-background"></div>
+                        <span class="slot-item-text active">Acompanhamento 1</span>
+                        <span class="slot-item-text"></span>
                     </div>
                 </div>
                 <div class="slot-item" id="acompanhamento2">
                     <div class="slot-item-content">
-                        <span class="slot-item-text">Acompanhamento 2</span>
-                        <div class="sliding-background"></div>
+                        <span class="slot-item-text active">Acompanhamento 2</span>
+                        <span class="slot-item-text"></span>
                     </div>
                 </div>
                 <div class="slot-item" id="acompanhamento3">
                     <div class="slot-item-content">
-                        <span class="slot-item-text">Acompanhamento 3</span>
-                        <div class="sliding-background"></div>
+                        <span class="slot-item-text active">Acompanhamento 3</span>
+                        <span class="slot-item-text"></span>
                     </div>
                 </div>
             </div>
+            <div id="preco"><span class="price-text active">R$ 0,00</span></div>
             <button id="embaralhar">Embaralhar!</button>
         </div>
     <script>
@@ -342,38 +382,43 @@
             if (tipoAcompanhamento) {
                 const escolhido1 = escolherAleatorio(acompanhamentos3);
                 let escolhido2, escolhido3;
+
+                const temCreme = (item) => item.nome.includes("Creme");
+                const temArroz = (item) => item.nome.includes("Arroz");
+                const temBatata = (item) => item.nome.includes("Batata") || item.nome.includes("Polenta") || item.nome.includes("Mandioca");
+                const temLegumes = (item) => item.nome.includes("Legumes");
+
                 do {
                     escolhido2 = escolherAleatorio(acompanhamentos3);
                 } while (
                     escolhido2 === escolhido1 ||
-                    (escolhido1.nome.includes("Batata") && escolhido2.nome.includes("Batata")) ||
-                    (escolhido1.nome.includes("Legumes cozidos") && escolhido2.nome.includes("Legumes grelhados")) ||
-                    (escolhido1.nome.includes("Legumes grelhados") && escolhido2.nome.includes("Legumes cozidos")) ||
-                    (escolhido1.nome.includes("Purê de batata") && escolhido2.nome.includes("Batata")) ||
-                    (escolhido2.nome.includes("Purê de batata") && escolhido1.nome.includes("Batata")) ||
+                    (temBatata(escolhido1) && temBatata(escolhido2)) ||
+                    (temLegumes(escolhido1) && temLegumes(escolhido2)) ||
+                    (temCreme(escolhido1) && temCreme(escolhido2)) ||
+                    (temArroz(escolhido1) && temArroz(escolhido2)) ||
                     (escolhido1.nome.includes("Arroz com brócolis") && escolhido2.nome.includes("Brócolis cozido")) ||
                     (escolhido2.nome.includes("Arroz com brócolis") && escolhido1.nome.includes("Brócolis cozido"))
                 );
+
                 do {
                     escolhido3 = escolherAleatorio(acompanhamentos3);
                 } while (
                     escolhido3 === escolhido1 ||
                     escolhido3 === escolhido2 ||
-                    (escolhido1.nome.includes("Batata") && escolhido3.nome.includes("Batata")) ||
-                    (escolhido2.nome.includes("Batata") && escolhido3.nome.includes("Batata")) ||
-                    (escolhido1.nome.includes("Legumes cozidos") && escolhido3.nome.includes("Legumes grelhados")) ||
-                    (escolhido1.nome.includes("Legumes grelhados") && escolhido3.nome.includes("Legumes cozidos")) ||
-                    (escolhido2.nome.includes("Legumes cozidos") && escolhido3.nome.includes("Legumes grelhados")) ||
-                    (escolhido2.nome.includes("Legumes grelhados") && escolhido3.nome.includes("Legumes cozidos")) ||
-                    (escolhido1.nome.includes("Purê de batata") && escolhido3.nome.includes("Batata")) ||
-                    (escolhido3.nome.includes("Purê de batata") && escolhido1.nome.includes("Batata")) ||
-                    (escolhido2.nome.includes("Purê de batata") && escolhido3.nome.includes("Batata")) ||
-                    (escolhido3.nome.includes("Purê de batata") && escolhido2.nome.includes("Batata")) ||
+                    (temBatata(escolhido1) && temBatata(escolhido3)) ||
+                    (temBatata(escolhido2) && temBatata(escolhido3)) ||
+                    (temLegumes(escolhido1) && temLegumes(escolhido3)) ||
+                    (temLegumes(escolhido2) && temLegumes(escolhido3)) ||
+                    (temCreme(escolhido1) && temCreme(escolhido3)) ||
+                    (temCreme(escolhido2) && temCreme(escolhido3)) ||
+                    (temArroz(escolhido1) && temArroz(escolhido3)) ||
+                    (temArroz(escolhido2) && temArroz(escolhido3)) ||
                     (escolhido1.nome.includes("Arroz com brócolis") && escolhido3.nome.includes("Brócolis cozido")) ||
                     (escolhido3.nome.includes("Arroz com brócolis") && escolhido1.nome.includes("Brócolis cozido")) ||
                     (escolhido2.nome.includes("Arroz com brócolis") && escolhido3.nome.includes("Brócolis cozido")) ||
                     (escolhido3.nome.includes("Arroz com brócolis") && escolhido2.nome.includes("Brócolis cozido"))
                 );
+
                 return [escolhido1, escolhido2, escolhido3];
             } else {
                 const escolhidoUnico = escolherAleatorio(acompanhamentos1);
@@ -386,6 +431,7 @@
             const acompanhamento1ElementContent = acompanhamento1Element.querySelector('.slot-item-content');
             const acompanhamento2Element = document.getElementById("acompanhamento2");
             const acompanhamento3Element = document.getElementById("acompanhamento3");
+            const precoElement = document.getElementById("preco");
 
             pratoPrincipalElementContent.innerHTML = `<span class="slot-item-text">${prato.nome}</span>`;
 
@@ -396,6 +442,12 @@
                 ? `<span class="slot-item-text">${acompanhamentos[1].nome}</span>` : "";
             acompanhamento3Element.querySelector('.slot-item-content').innerHTML = acompanhamentos[2] && acompanhamentos[2].nome
                 ? `<span class="slot-item-text">${acompanhamentos[2].nome}</span>` : "";
+            
+            // Atualiza e mostra o preço
+            if (precoElement) {
+                precoElement.textContent = `R$ ${prato.preco.toFixed(2)}`;
+                precoElement.style.display = "block";
+            }
         }
 
         function embaralharPrato() {
@@ -406,6 +458,7 @@
             let nomesAcompanhamentos1 = [];
             let nomesAcompanhamentos2 = [];
             let nomesAcompanhamentos3 = [];
+            const precoElement = document.getElementById("preco");
 
             const pratoPrincipalElementContent = pratoPrincipalElement.querySelector('.slot-item-content');
             const acompanhamento1ElementContent = acompanhamento1Element.querySelector('.slot-item-content');
@@ -416,6 +469,10 @@
             const sorteioAcompanhamentoUnico = Math.random() >= 0.7;
 
             intervaloRotacao = setInterval(() => {
+                // Gera um preço aleatório entre 19.00 e 36.80 durante a animação
+                const precoAleatorio = (Math.random() * (36.80 - 19.00) + 19.00).toFixed(2);
+                precoElement.textContent = `R$ ${precoAleatorio}`;
+                
                 nomesPratos.push(escolherAleatorio(pratosPrincipais).nome);
 
                 if (sorteioAcompanhamentoUnico) {
@@ -451,6 +508,91 @@
 
         embaralharButton.addEventListener("click", embaralharPrato);
 
+        // Inicia a animação ao abrir a página
+        embaralharPrato();
+    </script>
+    <script>
+        function setAnimatedText(element, newText) {
+            const container = element.querySelector('.slot-item-content');
+            const oldSpan = container.querySelector('.slot-item-text.active');
+            const newSpan = container.querySelector('.slot-item-text:not(.active)');
+            // Limpa classes antigas
+            newSpan.classList.remove('slide-in', 'slide-out', 'active');
+            oldSpan.classList.remove('slide-in', 'slide-out');
+            newSpan.textContent = newText;
+            // Prepara novo texto para animar de baixo
+            newSpan.classList.add('slide-in');
+            // Força reflow
+            void newSpan.offsetWidth;
+            // Anima antigo pra cima e novo pra posição
+            oldSpan.classList.add('slide-out');
+            newSpan.classList.remove('slide-in');
+            newSpan.classList.add('active');
+            setTimeout(() => {
+                oldSpan.classList.remove('active', 'slide-out');
+                oldSpan.textContent = '';
+            }, 300);
+        }
+
+        function setAnimatedPrice(newPrice) {
+            const precoElement = document.getElementById('preco');
+            const oldSpan = precoElement.querySelector('.price-text.active');
+            let newSpan = precoElement.querySelector('.price-text:not(.active)');
+            if (!newSpan) {
+                newSpan = document.createElement('span');
+                newSpan.className = 'price-text';
+                precoElement.appendChild(newSpan);
+            }
+            newSpan.classList.remove('slide-in', 'slide-out', 'active');
+            oldSpan.classList.remove('slide-in', 'slide-out');
+            newSpan.textContent = `R$ ${newPrice.toFixed(2)}`;
+            newSpan.classList.add('slide-in');
+            void newSpan.offsetWidth;
+            oldSpan.classList.add('slide-out');
+            newSpan.classList.remove('slide-in');
+            newSpan.classList.add('active');
+            setTimeout(() => {
+                oldSpan.classList.remove('active', 'slide-out');
+                oldSpan.textContent = '';
+            }, 300);
+        }
+
+        async function embaralharPrato() {
+            if (animando) return;
+            animando = true;
+            const baseDelay = 180;
+            const sorteios = 8;
+            for (let i = 0; i < sorteios; i++) {
+                const prato = escolherAleatorio(pratosPrincipais);
+                const acompanhamentos = escolherAcompanhamentos();
+                setAnimatedText(pratoPrincipalElement, prato.nome);
+                await new Promise(r => setTimeout(r, baseDelay));
+                setAnimatedText(acompanhamento1Element, acompanhamentos[0]?.nome || '');
+                await new Promise(r => setTimeout(r, baseDelay));
+                setAnimatedText(acompanhamento2Element, acompanhamentos[1]?.nome || '');
+                await new Promise(r => setTimeout(r, baseDelay));
+                setAnimatedText(acompanhamento3Element, acompanhamentos[2]?.nome || '');
+                setAnimatedPrice(prato.preco);
+                await new Promise(r => setTimeout(r, baseDelay));
+            }
+            // Sorteio final válido
+            let pratoFinal, acompanhamentosFinal;
+            do {
+                pratoFinal = escolherAleatorio(pratosPrincipais);
+                acompanhamentosFinal = escolherAcompanhamentos();
+            } while (!acompanhamentosFinal[0] || !acompanhamentosFinal[0].nome);
+            setAnimatedText(pratoPrincipalElement, pratoFinal.nome);
+            await new Promise(r => setTimeout(r, baseDelay));
+            setAnimatedText(acompanhamento1Element, acompanhamentosFinal[0]?.nome || '');
+            await new Promise(r => setTimeout(r, baseDelay));
+            setAnimatedText(acompanhamento2Element, acompanhamentosFinal[1]?.nome || '');
+            await new Promise(r => setTimeout(r, baseDelay));
+            setAnimatedText(acompanhamento3Element, acompanhamentosFinal[2]?.nome || '');
+            setAnimatedPrice(pratoFinal.preco);
+            animando = false;
+        }
+
+        embaralharButton.addEventListener("click", embaralharPrato);
         // Inicia a animação ao abrir a página
         embaralharPrato();
     </script>
